@@ -391,6 +391,7 @@ nav
                     border: 0.25em solid $main_color
 
 .how
+    position: relative
     margin-top: 3.5em
     padding: 0 3.25em
     &_step
@@ -411,12 +412,36 @@ nav
             border-radius: 1em
             padding: 2em
         &_form
+            display: flex
+            flex-direction: column
+            align-items: center
             text-align: center
             margin-top: 2.5em
             .h4
+                +reg16
                 color: #735A80
-
-                
-                    
+            .h3
+                +bold20
+                margin-top: 1em
+            &_txt
+                +reg20
+                text-align: center 
+                margin-top: 1em
     &_line
-        position: absolute
+        &_left
+            position: absolute
+            width: 17vw
+            height: 0.625em
+            background: url('../icons/how_to_order/Line.svg') center (center / cover) no-repeat
+            left: 32em
+            top: 8.5em
+        &_right
+            position: absolute
+            width: 17vw
+            height: 0.625em
+            background: url('../icons/how_to_order/Line.svg') center (center / cover) no-repeat
+            right: 32em
+            top: 8.5em
+            
+            
+        
