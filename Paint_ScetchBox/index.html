@@ -745,5 +745,38 @@
             </div>
         </div>
     </section>
+    <section class="request">
+        <img src="img/images/Left_Paint_Splatter.png" alt="Splatter1" class="request_bg1"><img src="img/images/Right_Paint_Splatter.png" alt="Splatter2" class="request_bg2">
+        <h2 class="h2">Оставить заявку</h2>
+        <div class="container-lg request_form">
+            <div class="mb-3 col-12">
+                <label for="Name_form" class="form-label request_form_label">ФИО</label>
+                <input class="form-control request_form_control" type="text" placeholder="ФИО" id="Name_form" aria-label="default input example" required>
+            </div>
+            <div class="mb-3 col-12">
+                <label for="Mail_form" class="form-label request_form_label">Электронная почта</label>
+                <input type="email" class="form-control request_form_control" id="Mail_form" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3 col-12">
+                <label for="phone_num" class="form-label request_form_label">Номер телефона</label>
+                <input type="tel" class="form-control request_form_control" size="16" value="+7 " maxlength="16" id="phone_num" placeholder="+7 777 777 77 77" required>
+            </div>
+            <div class="mb-3 col-12">
+                <label for="city_form" class="form-label request_form_label">Куда доставить?</label>
+                <select class="form-select request_form_select" aria-label="Default select example">
+                    <option selected>Алматы</option>
+                    <option value="1">Астана</option>
+                    <option value="2">Шымкент</option>
+                    <option value="3">Напишу в комментарие</option>
+                </select>
+            </div>
+            <div class="mb-3 col-12">
+                <label for="Comment_txtarea" class="form-label request_form_label">Комментарий</label>
+                <textarea class="form-control request_form_control" id="Comment_txtarea" rows="3"></textarea>
+            </div>      
+            <button type="submit" class="button request_form_btn">Оставить заявку</button>
+        </div>
+        
+    </section>
 </body>
 </html>
