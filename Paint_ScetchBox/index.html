@@ -503,7 +503,7 @@
                                     <img src="img/examples/number/Image-2.png" class="d-block w-100 carousel-slide-img" alt="Примеры картин по номерам">
                                     <div class="slide-content">
                                         <a href="#" class="btn btn-primary slide-content_btn">Подробнее</a>
-                                        <a href="#" class="btn btn-primary slide-content_btn_primary">Заказать</a>
+                                        <a href="#" class="btn btn-primary slide_content_btn_primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
@@ -625,7 +625,7 @@
                                     <img src="img/examples/module/Image-2.png" class="d-block w-100 carousel-slide-img" alt="Примеры модульных картин">
                                     <div class="slide-content">
                                         <a href="#" class="btn btn-primary slide-content_btn">Подробнее</a>
-                                        <a href="#" class="btn btn-primary slide-content_btn_primary">Заказать</a>
+                                        <a href="#" class="btn btn-primary slide_content_btn_primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
@@ -642,7 +642,7 @@
                                     <img src="img/examples/module/Image.png" class="d-block w-100 carousel-slide-img" alt="Примеры модульных картин">
                                     <div class="slide-content">
                                         <a href="#" class="btn btn-primary slide-content_btn">Подробнее</a>
-                                        <a href="#" class="btn btn-primary slide-content_btn_primary">Заказать</a>
+                                        <a href="#" class="btn btn-primary slide_content_btn_primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
@@ -652,7 +652,7 @@
                                     <img src="img/examples/module/Image-1.png" class="d-block w-100 carousel-slide-img" alt="Примеры модульных картин">
                                     <div class="slide-content">
                                         <a href="#" class="btn btn-primary slide-content_btn">Подробнее</a>
-                                        <a href="#" class="btn btn-primary slide-content_btn_primary">Заказать</a>
+                                        <a href="#" class="btn btn-primary slide_content_btn_primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
@@ -661,7 +661,7 @@
                                     <img src="img/examples/module/Image-2.png" class="d-block w-100 carousel-slide-img" alt="Примеры модульных картин">
                                     <div class="slide-content">
                                         <a href="#" class="btn btn-primary slide-content_btn">Подробнее</a>
-                                        <a href="#" class="btn btn-primary slide-content_btn_primary">Заказать</a>
+                                        <a href="#" class="btn btn-primary slide_content_btn_primary">Заказать</a>
                                     </div>
                                 </div>
                             </div>
@@ -748,35 +748,76 @@
     <section class="request">
         <img src="img/images/Left_Paint_Splatter.png" alt="Splatter1" class="request_bg1"><img src="img/images/Right_Paint_Splatter.png" alt="Splatter2" class="request_bg2">
         <h2 class="h2">Оставить заявку</h2>
-        <div class="container-lg request_form">
-            <div class="mb-3 col-12">
+        <div class="container-lg">
+            <form class="needs-validation request_form" id="requestForm" novalidate>
+                <div class="mb-3 col-12">
                 <label for="Name_form" class="form-label request_form_label">ФИО</label>
                 <input class="form-control request_form_control" type="text" placeholder="ФИО" id="Name_form" aria-label="default input example" required>
+                <div class="invalid-feedback">
+                    Пожалуйста, введите ваше ФИО.
+                </div>
             </div>
             <div class="mb-3 col-12">
                 <label for="Mail_form" class="form-label request_form_label">Электронная почта</label>
                 <input type="email" class="form-control request_form_control" id="Mail_form" placeholder="name@example.com" required>
+                <div class="invalid-feedback">
+                    Пожалуйста, введите корректный адрес электронной почты.
+                </div>
             </div>
             <div class="mb-3 col-12">
                 <label for="phone_num" class="form-label request_form_label">Номер телефона</label>
-                <input type="tel" class="form-control request_form_control" size="16" value="+7 " maxlength="16" id="phone_num" placeholder="+7 777 777 77 77" required>
+                <input type="tel" class="form-control request_form_control" size="16" maxlength="16" id="phone_num" placeholder="+7 777 777 77 77" required>
+                <div class="invalid-feedback">
+                    Пожалуйста, введите корректный номер телефона.
+                </div>
             </div>
             <div class="mb-3 col-12">
                 <label for="city_form" class="form-label request_form_label">Куда доставить?</label>
-                <select class="form-select request_form_select" aria-label="Default select example">
-                    <option selected>Алматы</option>
-                    <option value="1">Астана</option>
-                    <option value="2">Шымкент</option>
-                    <option value="3">Напишу в комментарие</option>
+                <select class="form-select request_form_select" id="city_form" aria-label="Default select example" required>
+                    <option value="">Выберите город</option>
+                    <option value="1">Алматы</option>
+                    <option value="2">Астана</option>
+                    <option value="3">Шымкент</option>
+                    <option value="4">Напишу в комментарие</option>
                 </select>
+                <div class="invalid-feedback">
+                    Пожалуйста, выберите город.
+                </div>
             </div>
             <div class="mb-3 col-12">
                 <label for="Comment_txtarea" class="form-label request_form_label">Комментарий</label>
                 <textarea class="form-control request_form_control" id="Comment_txtarea" rows="3"></textarea>
             </div>      
             <button type="submit" class="button request_form_btn">Оставить заявку</button>
+            </form>
         </div>
-        
     </section>
+    <script>
+        // Form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('requestForm');
+            
+            form.addEventListener('submit', function(event) {
+                // Validate phone number
+                const phoneInput = document.getElementById('phone_num');
+                const phoneRegex = /^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$/;
+                
+                if (!phoneRegex.test(phoneInput.value)) {
+                    phoneInput.classList.add('is-invalid');
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    phoneInput.classList.remove('is-invalid');
+                }
+                
+                if (!form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                
+                form.classList.add('was-validated');
+            }, false);
+        });
+    </script>
 </body>
 </html>
