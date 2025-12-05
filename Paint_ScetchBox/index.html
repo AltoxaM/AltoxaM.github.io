@@ -774,13 +774,23 @@
             </div>
             <div class="mb-3 col-12">
                 <label for="city_form" class="form-label request_form_label">Куда доставить?</label>
-                <select class="form-select request_form_select" id="city_form" aria-label="Default select example" required>
-                    <option value="">Выберите город</option>
-                    <option value="1">Алматы</option>
-                    <option value="2">Астана</option>
-                    <option value="3">Шымкент</option>
-                    <option value="4">Напишу в комментарие</option>
-                </select>
+                <div class="custom-select-wrapper">
+                    <select class="custom-select" id="city_form" required>
+                        <option value="">Выберите город</option>
+                        <option value="1">Алматы</option>
+                        <option value="2">Астана</option>
+                        <option value="3">Шымкент</option>
+                        <option value="4">Напишу в комментарие</option>
+                    </select>
+                    <div class="custom-select-trigger">Выберите город</div>
+                    <div class="custom-select-options">
+                        <div class="custom-option" data-value="">Выберите город</div>
+                        <div class="custom-option" data-value="1">Алматы</div>
+                        <div class="custom-option" data-value="2">Астана</div>
+                        <div class="custom-option" data-value="3">Шымкент</div>
+                        <div class="custom-option" data-value="4">Напишу в комментарие</div>
+                    </div>
+                </div>
                 <div class="invalid-feedback">
                     Пожалуйста, выберите город.
                 </div>
@@ -867,6 +877,54 @@
                     messageDiv.style.display = 'block';
                 });
             }, false);
+        });
+    </script>
+    <script>
+        // Custom Select Component
+        document.addEventListener('DOMContentLoaded', function() {
+            const customSelects = document.querySelectorAll('.custom-select-wrapper');
+
+            customSelects.forEach(wrapper => {
+                const trigger = wrapper.querySelector('.custom-select-trigger');
+                const options = wrapper.querySelector('.custom-select-options');
+                const select = wrapper.querySelector('.custom-select');
+                const customOptions = wrapper.querySelectorAll('.custom-option');
+
+                // Toggle dropdown
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    options.classList.toggle('active');
+                    trigger.classList.toggle('active');
+                });
+
+                // Select option
+                customOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const value = option.dataset.value;
+                        const text = option.textContent;
+
+                        trigger.textContent = text;
+                        select.value = value;
+
+                        customOptions.forEach(opt => opt.classList.remove('selected'));
+                        option.classList.add('selected');
+
+                        options.classList.remove('active');
+                        trigger.classList.remove('active');
+
+                        // Trigger change event
+                        select.dispatchEvent(new Event('change', { bubbles: true }));
+                    });
+                });
+
+                // Close on outside click
+                document.addEventListener('click', (e) => {
+                    if (!wrapper.contains(e.target)) {
+                        options.classList.remove('active');
+                        trigger.classList.remove('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
