@@ -59,9 +59,10 @@ jobs:
         pip install flet-cli==$FLET_CLI_VERSION
 
     - name: Flet Build Web
+      working-directory: src/app
       run: |
         echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}, USER: ${GITHUB_REPOSITORY%/*}, PROJECT_BASE_URL: ${GITHUB_REPOSITORY#*/}"
-        flet build web --module-name myapp.main --base-url ${GITHUB_REPOSITORY#*/} --route-url-strategy hash
+        flet build web --base-url ${GITHUB_REPOSITORY#*/} --route-url-strategy hash
 
     - name: Upload Artifact
       uses: actions/upload-pages-artifact@v3
