@@ -58,6 +58,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flet-cli==$FLET_CLI_VERSION
 
+    - name: Build web output
+      run: flet build
+      
     - name: Upload Artifact
       uses: actions/upload-pages-artifact@v3
       with:
