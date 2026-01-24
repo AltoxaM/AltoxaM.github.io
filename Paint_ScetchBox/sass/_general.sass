@@ -250,6 +250,9 @@ nav
                 
         &_body
             text-align: center
+            display: flex
+            flex-direction: column
+            justify-content: space-between
             &_h3
                 +h3
             &_txt
@@ -360,17 +363,17 @@ nav
     &_line
         &_left
             position: absolute
-            width: 17vw
+            width: 17%
             height: 0.625em
-            background: url('../icons/how_to_order/Line.svg') center (center / cover) no-repeat
-            left: 32em
+            background: url('../icons/how_to_order/Line.svg') center (center / contain) no-repeat
+            left: 26%
             top: 8.5em
         &_right
             position: absolute
-            width: 17vw
+            width: 17%
             height: 0.625em
-            background: url('../icons/how_to_order/Line.svg') center (center / cover) no-repeat
-            right: 32em
+            background: url('../icons/how_to_order/Line.svg') center (center / contain) no-repeat
+            right: 26%
             top: 8.5em
 
 .request
