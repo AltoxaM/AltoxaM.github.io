@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Запись на приём</title>
+    <!-- Правильное подключение статики во Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Онлайн-запись к врачу</h1>
+
+    <h2>Пациент</h2>
+    <p>
+        {{ citizen["last_name"] }} {{ citizen["first_name"] }},
+        ИИН: {{ citizen["iin"] }},
+        Дата рождения: {{ citizen["birth_date"] }}
+    </p>
+
+    <h2>Шаг 2. Выберите врача</h2>
+    <form method="get" action="{{ url_for('booking') }}">
+        <input type="hidden" name="iin" value="{{ citizen['iin'] }}">
+        <label>Врач:
+            <select name="doctor_id" required>
+                <option value="">-- выберите врача --</option>
+                {% for d in doctors %}
+                    <option value="{{ d['id'] }}"
+                        {% if doctor_id and (d['id'] == doctor_id|int) %}selected{% endif %}>
+                        {{ d["full_name"] }} ({{ d["specialty"] }})
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+        <button type="submit">Показать свободное время</button>
+    </form>
+
+    {% if doctor_selected %}
+        <h2>Шаг 3. Выберите время приёма</h2>
+        <p>Врач: {{ doctor_selected["full_name"] }} ({{ doctor_selected["specialty"] }})</p>
+
+        {% if slots %}
+             <form method="post" action="{{ url_for('book') }}">
+                <input type="hidden" name="iin" value="{{ citizen['iin'] }}">
+                <input type="hidden" name="doctor_id" value="{{ doctor_selected['id'] }}">
+
+                {% for s in slots %}
+                    <label class="slot-option">
+                        <input type="radio" name="slot_id" value="{{ s['id'] }}" required>
+                        {{ s["date"] }} {{ s["time"] }}
+                    </label>
+                    <br>
+                {% endfor %}
+
+                <button type="submit">Подтвердить запись</button>
+            </form>
+        {% else %}
+            <p>Нет доступных слотов для выбранного врача.</p>
+        {% endif %}
+    {% endif %}
+</div>
+</body>
+</html>
