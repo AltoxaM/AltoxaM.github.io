@@ -1,5 +1,8 @@
+@use "variable" as *
+@use "mixin" as *
+
 body
-    background-color: $bg_color
+    background-color: #f5f7ff
 
 h2
     +h2
@@ -284,6 +287,7 @@ nav
         overflow: hidden
         &-img
             object-fit: cover
+            height: inherit
     .slide-content
         display: flex
         justify-content: space-around
@@ -647,4 +651,4 @@ footer
                     transition: 0.7s all
                     &:hover
                         color: $main_color
-                
+
