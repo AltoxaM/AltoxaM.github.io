@@ -7,15 +7,15 @@ const postcss = require('gulp-postcss');
 const rename = require("gulp-rename");
 
 gulp.task('server', function() {
-
-    browserSync({
+    browserSync.init({
         server: {
-            baseDir: "Uber_project"
+            baseDir: "./"
         }
     });
-
     gulp.watch("Uber_project/*.html").on('change', browserSync.reload);
 });
+
+    
 
 gulp.task('styles', function() {
     return gulp.src("Uber_project/sass/**/*.+(scss|sass)")
@@ -23,8 +23,8 @@ gulp.task('styles', function() {
         .pipe(rename({suffix: '.min', prefix: ''}))
         .pipe(postcss([ autoprefixer() ]))
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest("Uber_project/css"));
-        // .pipe(browserSync.stream());
+        .pipe(gulp.dest("Uber_project/css"))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('watch', function() {
