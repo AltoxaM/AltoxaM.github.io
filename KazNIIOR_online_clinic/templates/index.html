@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн-запись к врачу</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Онлайн-запись к врачу</h1>
+
+    <h2>Шаг 1. Введите ИИН</h2>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="post">
+        <label>ИИН:
+            <input type="text" name="iin" required>
+        </label>
+        <button type="submit">Продолжить</button>
+    </form>
+</div>
+</body>
+</html>

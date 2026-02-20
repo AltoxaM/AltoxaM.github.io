@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Запись подтверждена</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Запись успешно создана</h1>
+
+    <h2>Пациент</h2>
+    <p>
+        {{ citizen["last_name"] }} {{ citizen["first_name"] }},
+        ИИН: {{ citizen["iin"] }}
+    </p>
+
+    <h2>Детали записи</h2>
+    <p>
+        Врач: {{ doctor["full_name"] }} ({{ doctor["specialty"] }})<br>
+        Дата и время: {{ slot["date"] }} {{ slot["time"] }}
+    </p>
+
+    <p><a href="{{ url_for('index') }}">Создать новую запись</a></p>
+</div>
+</body>
+</html>

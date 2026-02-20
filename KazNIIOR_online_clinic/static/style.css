@@ -1,0 +1,79 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 24px 32px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+h1 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+h2 {
+    margin-top: 24px;
+    color: #34495e;
+}
+
+label {
+    display: block;
+    margin: 12px 0;
+}
+
+input[type="text"],
+select {
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.error {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+.slot-option {
+    margin-bottom: 5px;
+}
+
+
+.doctors-table .doctor-btn {
+    width: 100%;
+    padding: 8px 12px;
+    text-align: left;
+    color: black;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    cursor: pointer;
+}
+
+.doctors-table .doctor-btn:hover {
+    background-color: #e5f1ff;
+}
