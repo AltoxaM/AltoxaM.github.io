@@ -9,7 +9,7 @@ const rename = require("gulp-rename");
 gulp.task('server', function() {
     browserSync.init({
         server: {
-            baseDir: "./"
+            baseDir: "Uber_project"
         }
     });
     gulp.watch("Uber_project/*.html").on('change', browserSync.reload);
